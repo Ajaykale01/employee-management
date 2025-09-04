@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> filter Employee</title>
+</head>
+
+<body>
+    <h2>filter Employee</h2>
+
+
+
+     <form action="/filter_emp" method="POST">
+    {% csrf_token %}
+    
+    <label for="name">Employee First Name</label><br>
+    <input type="text" id="name" name="name"><br><br>
+
+    <label for="dept">Department</label><br>
+    <input type="text" id="dept" name="dept"><br><br>
+
+    <label for="role">Role</label><br>
+    <input type="text" id="role" name="role"><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+
+</html>

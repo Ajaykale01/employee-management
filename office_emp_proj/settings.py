@@ -13,11 +13,13 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import pymysql
 pymysql.install_as_MySQLdb()
+import os
 
+STATIC_URL = '/static/'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -78,25 +80,17 @@ WSGI_APPLICATION = 'office_emp_proj.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-    
     
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'employee_db',     
-        'USER': 'root',      
-        'PASSWORD': 'K@le0463',  
-        'HOST': 'localhost',        
-        'PORT': '3306',            
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'NAME': os.environ.get("MYSQLDATABASE"),
+        'USER': os.environ.get("MYSQLUSER"),
+        'PASSWORD': os.environ.get("MYSQLPASSWORD"),
+        'HOST': os.environ.get("MYSQLHOST"),
+        'PORT': os.environ.get("MYSQLPORT"),
     }
-    
 }
+
 
 
 # Password validation
